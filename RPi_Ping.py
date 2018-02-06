@@ -8,8 +8,7 @@ from decimal import Decimal
 from platform import system as sys_name
 
 resultados = {} #Diccionario donde se guardan los resultados
-counting_open = []
-counting_close = []
+puertos = {}
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -23,11 +22,11 @@ def scan(host,port):
 	result = s.connect_ex((host,port))
 	print('working on port > '+(str(port)))      
 	if result == 0:
-		counting_open.append(port)
+		puertos[port] = "Open"
 		print((str(port))+' -> open') 
 		s.close()
 	else:
-		counting_close.append(port)
+		puertos[port] = "Close"
 		print((str(port))+' -> close') 
 		s.close()
 
@@ -60,6 +59,7 @@ def scan(host,port):
               #d = a
 y = Decimal(input("Direccion Inicio: "))
 x = Decimal(input("Direccion Fin: "))
+p = Decimal(input("Puerto: "))
 a = "192.168.1"
 parameters = "-n 1 " if sys_name().lower()=="windows" else "-c 1 "
 while y <= x:
@@ -80,7 +80,6 @@ pinglog = open("pinglog.txt","a")
 for k in resultados:
        pinglog.write("Usuario: " + a + "." + str(k) + " Activo\n")
        test = a + "." + str(k)
-       scan(test,80)
-       pinglog.write(str(counting_open) + "\n")
+       scan(test,p)
        #print("Usuario: " + a + "." + str(k) + " Activo")
 pinglog.close()
