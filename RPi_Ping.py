@@ -61,13 +61,11 @@ y = Decimal(input("Direccion Inicio: "))
 x = Decimal(input("Direccion Fin: "))
 a = "192.168.1"
 parameters = "-n 1 " if sys_name().lower()=="windows" else "-c 1 "
-print(parameters)
 while y <= x:
        GPIO.output(led,1)
        direc = a + "." + str(y)
        #response = os.system("ping -c 1 " + direc)
        response = os.system("ping " + parameters + direc)
-       print(response)
        if response == 0:
               pingstatus = "Ususario Activo"
               resultados[y] = pingstatus
@@ -80,5 +78,8 @@ GPIO.output(led,0)
 pinglog = open("pinglog.txt","a")
 for k in resultados:
        pinglog.write("Usuario: " + a + "." + str(k) + " Activo\n")
+       test = a + "." + str(k)
+       scan(test,80)
+       pinglog.write(str(counting_open) + "\n")
        #print("Usuario: " + a + "." + str(k) + " Activo")
 pinglog.close()
