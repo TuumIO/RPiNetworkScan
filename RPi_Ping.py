@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 import os
 import sys
+import socket
 #import getopt
 from decimal import Decimal
 from platform import system as sys_name
