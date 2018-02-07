@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-import datetime
+#import datetime
 import os
 import sys
 import socket
@@ -33,7 +33,7 @@ def scan(host,port):
 		s.close()
 
 def file_n():
-	fm = "pinglog" + str(date.today()) + ".txt"
+	fm = "pinglog.txt"
 	return fm
 
 """
