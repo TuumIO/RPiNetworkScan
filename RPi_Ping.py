@@ -21,14 +21,15 @@ GPIO.setup(led, GPIO.OUT)
 def scan(host,port):
 	s = socket.socket()
 	result = s.connect_ex((host,port))
-	print('working on port > '+(str(port)))      
+	#print('working on port > '+(str(port)))      
+	addr = str(host) + ":" + str(port)
 	if result == 0:
-		puertos[port] = "Open"
-		print((str(port))+' -> open') 
+		puertos[addr] = "Open"
+		#print((str(port))+' -> open') 
 		s.close()
 	else:
-		puertos[port] = "Close"
-		print((str(port))+' -> close') 
+		puertos[addr] = "Close"
+		#print((str(port))+' -> close') 
 		s.close()
 
 def file_n():
@@ -67,7 +68,7 @@ for o, a in opts:
 
 y = Decimal(input("Direccion Inicio: "))
 x = Decimal(input("Direccion Fin: "))
-p = Decimal(input("Puerto: "))
+p = Decimal(input("Puerto a evaluar: "))
 a = "192.168.1"
 
 #parameters = "-n 1 " if sys_name().lower()=="windows" else "-c 1 "
@@ -86,11 +87,11 @@ while y <= x:
        y=y+1
 GPIO.output(led,0)
 
-pinglog = open(file_n(),"a")
-
 for k in resultados:
-       pinglog.write("Usuario: " + a + "." + str(k) + " Activo\n")
-       test = a + "." + str(k)
-       scan(test,p)
-       #print("Usuario: " + a + "." + str(k) + " Activo")
+	test = a + "." + str(k)
+	scan(test,p)
+	
+pinglog = open(file_n(),"a")
+for k in puertos:
+	pinglog.write("Puerto " + str(k) + "estado:" + "str[k]\n")
 pinglog.close()
