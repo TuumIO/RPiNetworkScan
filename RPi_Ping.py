@@ -24,11 +24,11 @@ def scan(host,port):
 	#print('working on port > '+(str(port)))      
 	addr = str(host) + ":" + str(port)
 	if result == 0:
-		puertos[addr] = "Open"
+		puertos[addr] = "Abierto"
 		#print((str(port))+' -> open') 
 		s.close()
 	else:
-		puertos[addr] = "Close"
+		puertos[addr] = "Cerrado"
 		#print((str(port))+' -> close') 
 		s.close()
 
@@ -93,5 +93,5 @@ for k in resultados:
 	
 pinglog = open(file_n(),"a")
 for k in puertos:
-	pinglog.write("Puerto " + str(k) + " estado: " + str(puertos[k]) + ";)\n")
+	pinglog.write("Puerto " + str(k) + " estado: " + str(puertos[k]) + " ;)\n")
 pinglog.close()
