@@ -73,7 +73,7 @@ a = "192.168.1"
 
 #parameters = "-n 1 " if sys_name().lower()=="windows" else "-c 1 "
 while y <= x:
-       GPIO.output(led,1)
+       #GPIO.output(led,1)
        direc = a + "." + str(y)
        response = os.system("ping -c 1 " + direc)
        #response = os.system("ping " + parameters + direc)
@@ -85,7 +85,7 @@ while y <= x:
               pingstatus = "Usuario no Activo"
               print("Usuario: " + direc + " No Activo")
        y=y+1
-GPIO.output(led,0)
+#GPIO.output(led,0)
 
 for k in resultados:
 	test = a + "." + str(k)
