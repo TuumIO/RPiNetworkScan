@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import datetime
 import os
 import sys
 import socket
@@ -30,6 +31,10 @@ def scan(host,port):
 		print((str(port))+' -> close') 
 		s.close()
 
+def file_n():
+	fm = "pinglog" + str(date.today()) + ".txt"
+	return fm
+			     
 #def usage():
        
        #print("Uso: Ping")
@@ -76,7 +81,9 @@ while y <= x:
               print("Usuario: " + direc + " No Activo")
        y=y+1
 GPIO.output(led,0)
-pinglog = open("pinglog.txt","a")
+
+pinglog = open(file_n(),"a")
+
 for k in resultados:
        pinglog.write("Usuario: " + a + "." + str(k) + " Activo\n")
        test = a + "." + str(k)
