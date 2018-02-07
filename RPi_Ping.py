@@ -93,5 +93,5 @@ for k in resultados:
 	
 pinglog = open(file_n(),"a")
 for k in puertos:
-	pinglog.write("Puerto " + str(k) + "estado:" + "str[k]\n")
+	pinglog.write("Puerto " + str(k) + " estado: " + str[k] + ";)\n")
 pinglog.close()
