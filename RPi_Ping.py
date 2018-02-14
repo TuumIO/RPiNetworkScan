@@ -7,6 +7,7 @@ import socket
 #import getopt
 from decimal import Decimal
 #from platform import system as sys_name
+from threading import Thread
 
 resultados = {} #Diccionario donde se guardan los resultados
 puertos = {}
@@ -66,13 +67,12 @@ for o, a in opts:
               d = a
 """
 
-y = Decimal(input("Direccion Inicio: "))
-x = Decimal(input("Direccion Fin: "))
-p = Decimal(input("Puerto a evaluar: "))
+dirin = Decimal(input("Direccion Inicio: "))
+dirfin = Decimal(input("Direccion Fin: "))
+portev = Decimal(input("Puerto a evaluar: "))
 a = "192.168.1"
 
-#parameters = "-n 1 " if sys_name().lower()=="windows" else "-c 1 "
-while y <= x:
+def iptest(y):
        #GPIO.output(led,1)
        direc = a + "." + str(y)
        response = os.system("ping -c 1 " + direc)
@@ -84,9 +84,17 @@ while y <= x:
        else:
               pingstatus = "Usuario no Activo"
               print("Usuario: " + direc + " No Activo")
-       y=y+1
+
 #GPIO.output(led,0)
 
+for i in range(dirin, dirfin+1):
+	t = Thread(target=iptest, args=(i,))
+	threads.append(t)
+	t.start()
+	
+[x.join() for x in threads]
+
+"""
 for k in resultados:
 	test = a + "." + str(k)
 	scan(test,p)
@@ -95,3 +103,4 @@ pinglog = open(file_n(),"a")
 for k in puertos:
 	pinglog.write("Puerto " + str(k) + " estado: " + str(puertos[k]) + " ;)\n")
 pinglog.close()
+"""
