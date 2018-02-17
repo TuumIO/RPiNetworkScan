@@ -82,10 +82,10 @@ def iptest(y):
        if response == 0:
               pingstatus = "Ususario Activo"
               resultados[y] = pingstatus
-              print("Usuario: " + direc + " Activo")
+              #print("Usuario: " + direc + " Activo")
        else:
               pingstatus = "Usuario no Activo"
-              print("Usuario: " + direc + " No Activo")
+              #print("Usuario: " + direc + " No Activo")
 
 #GPIO.output(led,0)
 
@@ -96,6 +96,10 @@ for i in range(dirin, dirfin+1):
 	
 [x.join() for x in threads]
 
+pinglog = open(file_n(),"a")
+for k in resultados:
+	pinglog.write("Usuario " + str(k) + " activo " + str(resultados[k]) + " ;)\n")
+pinglog.close()
 """
 for k in resultados:
 	test = a + "." + str(k)
