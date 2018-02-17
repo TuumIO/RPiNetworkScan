@@ -96,7 +96,7 @@ for i in range(dirin, dirfin+1):
 	
 [x.join() for x in threads]
 
-pinglog = open(file_n(),"a")
+pinglog = open(file_n(),"x")
 for k in resultados:
 	pinglog.write("Usuario " + str(k) + " activo " + str(resultados[k]) + " ;)\n")
 pinglog.close()
