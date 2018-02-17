@@ -67,9 +67,9 @@ for o, a in opts:
               d = a
 """
 
-dirin = integer(input("Direccion Inicio: "))
-dirfin = integer(input("Direccion Fin: "))
-portev = integer(input("Puerto a evaluar: "))
+dirin = int(input("Direccion Inicio: "))
+dirfin = int(input("Direccion Fin: "))
+portev = int(input("Puerto a evaluar: "))
 a = "192.168.1"
 
 def iptest(y):
