@@ -67,9 +67,9 @@ for o, a in opts:
               d = a
 """
 
-dirin = Decimal(input("Direccion Inicio: "))
-dirfin = Decimal(input("Direccion Fin: "))
-portev = Decimal(input("Puerto a evaluar: "))
+dirin = integer(input("Direccion Inicio: "))
+dirfin = integer(input("Direccion Fin: "))
+portev = integer(input("Puerto a evaluar: "))
 a = "192.168.1"
 
 def iptest(y):
@@ -87,7 +87,7 @@ def iptest(y):
 
 #GPIO.output(led,0)
 
-for i in range(dirin, dirfin):
+for i in range(dirin, dirfin+1):
 	t = Thread(target=iptest, args=(i,))
 	threads.append(t)
 	t.start()
