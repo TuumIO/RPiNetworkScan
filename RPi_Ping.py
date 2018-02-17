@@ -12,6 +12,8 @@ from threading import Thread
 resultados = {} #Diccionario donde se guardan los resultados
 puertos = {}
 
+threads = []
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
