@@ -87,7 +87,7 @@ def iptest(y):
 
 #GPIO.output(led,0)
 
-for i in range(dirin, dirfin+1):
+for i in range(dirin, dirfin):
 	t = Thread(target=iptest, args=(i,))
 	threads.append(t)
 	t.start()
