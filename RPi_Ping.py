@@ -12,8 +12,8 @@ from threading import Thread
 resultados = {} #Diccionario donde se guardan los resultados
 puertos = {}
 
-threads = []
-treads = []
+threadsA = []
+threadsB = []
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -92,18 +92,18 @@ def iptest(y):
 
 for i in range(dirin, dirfin+1):
 	t1 = Thread(target=iptest, args=(i,))
-	threads.append(t1)
+	threadsA.append(t1)
 	t1.start()
 	
-[x.join() for x in threads]
+[x.join() for x in threadsA]
 
 for k in resultados:
 	host1 = a + "." + str(k)
 	t2 = Thread(target=scan, args=(host1,portev)
-	treads.append(t2)
+	threadsB.append(t2)
 	t2.start()	    
 
-[z.join() for z in threads]
+[z.join() for z in threadsB]
 		    
 pinglog = open(file_n(),"w")
 pinglog.write("Analisis IPs\n")
