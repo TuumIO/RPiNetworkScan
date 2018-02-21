@@ -99,7 +99,7 @@ for i in range(dirin, dirfin+1):
 
 for k in resultados:
 	host1 = a + "." + str(k)
-	t2 = Thread(target=scan, args=(host1,portev,)
+	t2 = Thread(target=scan, args=(host1,portev,))
 	threadsB.append(t2)
 	t2.start()	    
 
