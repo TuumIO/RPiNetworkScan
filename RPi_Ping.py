@@ -22,6 +22,14 @@ led = 16
 
 GPIO.setup(led, GPIO.OUT)
 
+def get_ip():
+    ip_address = '';
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8",80))
+    ip_address = s.getsockname()[0]
+    s.close()
+    return ip_address
+
 def scan(host,port):
 	s = socket.socket()
 	result = s.connect_ex((host,port))
@@ -73,6 +81,8 @@ for o, a in opts:
 dirin = int(input("Direccion Inicio: "))
 dirfin = int(input("Direccion Fin: "))
 portev = int(input("Puerto a evaluar: "))
+test = get_ip()
+print(test)
 a = "192.168.1"
 
 def iptest(y):
