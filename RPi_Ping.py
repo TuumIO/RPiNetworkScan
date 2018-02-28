@@ -32,12 +32,12 @@ def mask():
         sys.exit()
     count = 0
     puntos = 0
-    mask = ""
+    mask = []
     while count < len(ip_address):
         if ip_address[count] == ".":
             puntos += 1
             if puntos == 3:
-                return mask
+                return str(mask)
         else:
             mask[count] = ip_address[count]
         count += 1
