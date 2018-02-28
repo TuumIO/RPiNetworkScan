@@ -30,7 +30,7 @@ def mask():
     s.close()
     if len(ip_address) > 15:
         sys.exit()
-    count = 0
+    count = 1
     puntos = 0
     mask = []
     while count < len(ip_address):
