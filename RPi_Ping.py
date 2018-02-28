@@ -38,7 +38,7 @@ def mask():
             puntos += 1
             if puntos == 3:
                 return mask
-        else
+        else:
             mask[count] = ip_address[count]
         count += 1
 
