@@ -30,7 +30,7 @@ def mask():
     s.close()
     if len(ip_address) > 15:
         sys.exit()
-    count = 1
+    count = 0
     puntos = 0
     mask = []
     while count < len(ip_address):
@@ -39,7 +39,7 @@ def mask():
             if puntos == 3:
                 return str(mask)
         else:
-            mask[count] = ip_address[count]
+            mask.append(ip_address[count])
         count += 1
 
 def scan(host,port):
