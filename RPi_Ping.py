@@ -94,13 +94,11 @@ for o, a in opts:
 dirin = int(input("Direccion Inicio: "))
 dirfin = int(input("Direccion Fin: "))
 portev = int(input("Puerto a evaluar: "))
-test = mask()
-print(test)
-a = "192.168.1"
+a = mask()
 
 def iptest(y):
      
-       direc = a + "." + str(y)
+       direc = a + str(y)
        response = os.system("ping -c 1 " + direc)
        #response = os.system("ping " + parameters + direc)
        if response == 0:
