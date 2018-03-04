@@ -36,11 +36,11 @@ def mask():
     while count < len(ip_address):
         if ip_address[count] == ".":
             puntos += 1
-            mask.append(ip_address[count])
+            mask += ip_address[count]
             if puntos == 3:
                 return str(mask)
         else:
-            mask.append(ip_address[count])
+            mask += ip_address[count]
         count += 1
 
 def scan(host,port):
